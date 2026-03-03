@@ -1,0 +1,1 @@
+matricula, nome, pais de origem, idade, equipe que corre, motor do carro, pontuação

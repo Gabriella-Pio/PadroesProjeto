@@ -1,0 +1,14 @@
+# Maven - Arquivos de compilação
+target/
+
+# Segredos e Configurações Locais
+.env*
+
+# NetBeans
+nbproject/
+nb-configuration.xml
+nbactions.xml
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
