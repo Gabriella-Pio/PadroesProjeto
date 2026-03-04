@@ -12,11 +12,11 @@ public class IteratorMain {
             PilotosPersistencia persistencia = new PilotosPersistencia("src/main/java/dados/DadosDosPilotosF1 2.csv");
             ColecaoDeObjetos colecao = persistencia.carregarPilotos();
 
-            System.out.println("=== EXIBINDO PILOTOS (Via ArrayList Iterator) ===");
-            exibirGrid(colecao.getArrayListIterator());
+            // System.out.println("=== EXIBINDO PILOTOS (Via ArrayList Iterator) ===");
+            // exibirGrid(colecao.getArrayListIterator());
 
-            System.out.println("\n=== EXIBINDO PILOTOS (Via HashSet Iterator - Ordem pode variar) ===");
-            exibirGrid(colecao.getHashSetIterator());
+            // System.out.println("\n=== EXIBINDO PILOTOS (Via HashSet Iterator - Ordem pode variar) ===");
+            // exibirGrid(colecao.getHashSetIterator());
 
         } catch (Exception e) {
             System.err.println("Erro ao carregar dados: " + e.getMessage());
