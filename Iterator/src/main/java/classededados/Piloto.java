@@ -2,6 +2,8 @@ package classededados;
 
 public class Piloto {
 
+  // Atributos: matricula, nome, pais de origem, idade, equipe que corre, motor do
+  // carro, pontuação
   private String matricula;
   private String nome;
   private String paisOrigem;
@@ -10,6 +12,7 @@ public class Piloto {
   private String motorCarro;
   private int pontuacao;
 
+  // Construtor
   public Piloto(String matricula, String nome, String paisOrigem, int idade, String equipe, String motorCarro,
       int pontuacao) {
     this.matricula = matricula;
@@ -19,6 +22,18 @@ public class Piloto {
     this.equipe = equipe;
     this.motorCarro = motorCarro;
     this.pontuacao = pontuacao;
+  }
+
+  // Construtor matriz
+  public Piloto(String[] dados) {
+    String[] campos = dados[0].split(",");
+    this.matricula = campos[0].trim();
+    this.nome = campos[1].trim();
+    this.paisOrigem = campos[2].trim();
+    this.idade = Integer.parseInt(campos[3].trim());
+    this.equipe = campos[4].trim();
+    this.motorCarro = campos[5].trim();
+    this.pontuacao = Integer.parseInt(campos[6].trim());
   }
 
   // Getters e Setters
@@ -76,11 +91,5 @@ public class Piloto {
 
   public void setPontuacao(int pontuacao) {
     this.pontuacao = pontuacao;
-  }
-
-  @Override
-  public String toString() {
-    return String.format("%-4s | %-20s | %-10s | %2d anos | %-15s | %-12s | %d pts",
-        matricula, nome, paisOrigem, idade, equipe, motorCarro, pontuacao);
   }
 }

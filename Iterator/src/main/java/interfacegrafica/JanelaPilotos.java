@@ -1,27 +1,23 @@
 package interfacegrafica;
 
+import classededados.ColecaoDeObjetos;
 import classededados.Piloto;
 import persistencia.PilotosPersistencia;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Iterator;
 
-/**
- * Interface gráfica seguindo o padrão do professor para o projeto Iterator.
- */
 public class JanelaPilotos extends javax.swing.JFrame {
 
     public JanelaPilotos() {
         initComponents();
-        setLocationRelativeTo(null); // Centraliza a janela
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        jButtonArrayList = new javax.swing.JButton();
-        jButtonVector = new javax.swing.JButton();
+        jButtonMatriz = new javax.swing.JButton();
         jButtonHashSet = new javax.swing.JButton();
         jButtonStack = new javax.swing.JButton();
         jButtonLinkedList = new javax.swing.JButton();
@@ -34,11 +30,8 @@ public class JanelaPilotos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fórmula 1");
 
-        // jButtonArrayList.setText("ArrayList");
-        // jButtonArrayList.addActionListener(evt -> listarPilotos("ArrayList"));
-
-        // jButtonVector.setText("Vector");
-        // jButtonVector.addActionListener(evt -> listarPilotos("Vector"));
+        jButtonMatriz.setText("Matriz");
+        jButtonMatriz.addActionListener(evt -> listarPilotos("Matriz"));
 
         jButtonStack.setText("Stack");
         jButtonStack.addActionListener(evt -> listarPilotos("Stack"));
@@ -63,7 +56,6 @@ public class JanelaPilotos extends javax.swing.JFrame {
                 new String[] { "Matrícula", "Nome", "País", "Idade", "Equipe", "Motor", "Pontuação" }));
         jScrollPane1.setViewportView(jTableDados);
 
-        // Layout simplificado para demonstração
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,10 +65,8 @@ public class JanelaPilotos extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jScrollPane1)
                                         .addGroup(layout.createSequentialGroup()
-                                                // .addComponent(jButtonArrayList)
-                                                // .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                // .addComponent(jButtonVector)
-                                                // .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButtonMatriz)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButtonStack)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButtonPriorityQueue)
@@ -95,8 +85,7 @@ public class JanelaPilotos extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        // .addComponent(jButtonArrayList)
-                                        // .addComponent(jButtonVector)
+                                        .addComponent(jButtonMatriz)
                                         .addComponent(jButtonStack)
                                         .addComponent(jButtonPriorityQueue)
                                         .addComponent(jButtonLinkedList)
@@ -130,18 +119,20 @@ public class JanelaPilotos extends javax.swing.JFrame {
     private void listarPilotos(String tipo) {
         try {
             // Caminho do arquivo CSV
-            PilotosPersistencia persistencia = new PilotosPersistencia("./src/main/java/dados/DadosDosPilotosF1 2.csv");
-            var colecao = persistencia.carregarPilotos();
+            PilotosPersistencia persistencia = new PilotosPersistencia("./src/main/java/dados/DadosDosPilotosF1.csv");
+            ColecaoDeObjetos colecao = persistencia.carregarPilotos();
 
             // Seleciona o Iterator conforme o botão clicado
-            switch (tipo) {
-                // case "ArrayList" -> imprimirDadosNaGrid(colecao.getArrayListIterator());
-                // case "Vector" -> imprimirDadosNaGrid(colecao.getVectorIterator());
-                case "Stack" -> imprimirDadosNaGrid(colecao.getStackIterator());
-                case "PriorityQueue" -> imprimirDadosNaGrid(colecao.getPriorityQueueIterator());
-                case "LinkedList" -> imprimirDadosNaGrid(colecao.getLinkedListIterator());
-                case "TreeSet" -> imprimirDadosNaGrid(colecao.getTreeSetIterator());
-                case "HashSet" -> imprimirDadosNaGrid(colecao.getHashSetIterator());
+            if (tipo.equals("Matriz")) {
+                imprimirDadosNaGrid(colecao);
+            } else {
+                switch (tipo) {
+                    case "Stack" -> imprimirDadosNaGrid(colecao.getStackIterator());
+                    case "PriorityQueue" -> imprimirDadosNaGrid(colecao.getPriorityQueueIterator());
+                    case "LinkedList" -> imprimirDadosNaGrid(colecao.getLinkedListIterator());
+                    case "TreeSet" -> imprimirDadosNaGrid(colecao.getTreeSetIterator());
+                    case "HashSet" -> imprimirDadosNaGrid(colecao.getHashSetIterator());
+                }
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, "Erro: " + erro.getMessage());
@@ -158,8 +149,7 @@ public class JanelaPilotos extends javax.swing.JFrame {
     }
 
     // Declaração de variáveis
-    private javax.swing.JButton jButtonArrayList;
-    private javax.swing.JButton jButtonVector;
+    private javax.swing.JButton jButtonMatriz;
     private javax.swing.JButton jButtonStack;
     private javax.swing.JButton jButtonPriorityQueue;
     private javax.swing.JButton jButtonLinkedList;
