@@ -1,0 +1,6 @@
+adapter/AudioAdapter.class
+target/IFaixaMusical.class
+target/FaixaMusical.class
+adaptee/CatalogoLegado.class
+view/PlayerTela.class
+adaptee/IAudioLegado.class
