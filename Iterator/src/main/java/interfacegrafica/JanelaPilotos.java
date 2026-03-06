@@ -18,11 +18,11 @@ public class JanelaPilotos extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonMatriz = new javax.swing.JButton();
-        jButtonHashSet = new javax.swing.JButton();
+        jButtonHashMap = new javax.swing.JButton();
         jButtonStack = new javax.swing.JButton();
-        jButtonLinkedList = new javax.swing.JButton();
         jButtonPriorityQueue = new javax.swing.JButton();
         jButtonTreeSet = new javax.swing.JButton();
+        // jButtonLinkedList = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDados = new javax.swing.JTable();
@@ -33,27 +33,27 @@ public class JanelaPilotos extends javax.swing.JFrame {
         jButtonMatriz.setText("Matriz");
         jButtonMatriz.addActionListener(evt -> listarPilotos("Matriz"));
 
-        jButtonStack.setText("Stack");
+        jButtonStack.setText("Pilha");
         jButtonStack.addActionListener(evt -> listarPilotos("Stack"));
 
-        jButtonPriorityQueue.setText("PriorityQueue");
+        jButtonPriorityQueue.setText("Fila de Prioridade");
         jButtonPriorityQueue.addActionListener(evt -> listarPilotos("PriorityQueue"));
 
-        jButtonLinkedList.setText("LinkedList");
-        jButtonLinkedList.addActionListener(evt -> listarPilotos("LinkedList"));
-
-        jButtonTreeSet.setText("TreeSet");
+        jButtonTreeSet.setText("Árvore");
         jButtonTreeSet.addActionListener(evt -> listarPilotos("TreeSet"));
 
-        jButtonHashSet.setText("HashSet");
-        jButtonHashSet.addActionListener(evt -> listarPilotos("HashSet"));
+        jButtonHashMap.setText("Tabela Hash");
+        jButtonHashMap.addActionListener(evt -> listarPilotos("HashMap"));
+
+        // jButtonLinkedList.setText("LinkedList");
+        // jButtonLinkedList.addActionListener(evt -> listarPilotos("LinkedList"));
 
         jButtonLimpar.setText("Limpar");
         jButtonLimpar.addActionListener(evt -> limparGrid());
 
         jTableDados.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][] {},
-                new String[] { "Matrícula", "Nome", "País", "Idade", "Equipe", "Motor", "Pontuação" }));
+                new String[] { "Matrícula", "Nome", "País de Origem", "Idade", "Equipe", "Motor", "Pontuação" }));
         jScrollPane1.setViewportView(jTableDados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -71,13 +71,13 @@ public class JanelaPilotos extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButtonPriorityQueue)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButtonLinkedList)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButtonTreeSet)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButtonHashSet)
+                                                .addComponent(jButtonHashMap)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50,
                                                         Short.MAX_VALUE)
+                                                // .addComponent(jButtonLinkedList)
+                                                // .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButtonLimpar)))
                                 .addContainerGap()));
         layout.setVerticalGroup(
@@ -88,9 +88,9 @@ public class JanelaPilotos extends javax.swing.JFrame {
                                         .addComponent(jButtonMatriz)
                                         .addComponent(jButtonStack)
                                         .addComponent(jButtonPriorityQueue)
-                                        .addComponent(jButtonLinkedList)
                                         .addComponent(jButtonTreeSet)
-                                        .addComponent(jButtonHashSet)
+                                        .addComponent(jButtonHashMap)
+                                        // .addComponent(jButtonLinkedList)
                                         .addComponent(jButtonLimpar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
@@ -131,7 +131,7 @@ public class JanelaPilotos extends javax.swing.JFrame {
                     case "PriorityQueue" -> imprimirDadosNaGrid(colecao.getPriorityQueueIterator());
                     case "LinkedList" -> imprimirDadosNaGrid(colecao.getLinkedListIterator());
                     case "TreeSet" -> imprimirDadosNaGrid(colecao.getTreeSetIterator());
-                    case "HashSet" -> imprimirDadosNaGrid(colecao.getHashSetIterator());
+                    case "HashMap" -> imprimirDadosNaGrid(colecao.getHashMapIterator());
                 }
             }
         } catch (Exception erro) {
@@ -152,9 +152,9 @@ public class JanelaPilotos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMatriz;
     private javax.swing.JButton jButtonStack;
     private javax.swing.JButton jButtonPriorityQueue;
-    private javax.swing.JButton jButtonLinkedList;
     private javax.swing.JButton jButtonTreeSet;
-    private javax.swing.JButton jButtonHashSet;
+    private javax.swing.JButton jButtonHashMap;
+    // private javax.swing.JButton jButtonLinkedList;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDados;

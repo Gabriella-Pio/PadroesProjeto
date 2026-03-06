@@ -6,7 +6,7 @@ import java.util.Stack;
 import java.util.PriorityQueue;
 import java.util.LinkedList;
 import java.util.TreeSet;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Comparator;
 
 import java.util.NoSuchElementException;
@@ -19,13 +19,11 @@ public class ColecaoDeObjetos implements Iterator {
   private int col = 0;
 
   // Outras estruturas de dados
-  private LinkedList<Piloto> listaLinked = new LinkedList<>();
   private Stack<Piloto> pilhaStack = new Stack<>();
-  private HashSet<Piloto> conjuntoSet = new HashSet<>();
-  private PriorityQueue<Piloto> filaPrioridade = new PriorityQueue<>(Comparator.comparing(Piloto::getPontuacao)); // Prioriza
-                                                                                                                  // a
-                                                                                                                  // pontuação
+  private PriorityQueue<Piloto> filaPrioridade = new PriorityQueue<>(Comparator.comparing(Piloto::getPontuacao));
   private TreeSet<Piloto> arvoreSet = new TreeSet<>(Comparator.comparing(Piloto::getMatricula));
+  private HashMap<String, Piloto> mapaHashMap = new HashMap<>();
+  private LinkedList<Piloto> listaLinked = new LinkedList<>();
 
   public ColecaoDeObjetos(Piloto[][] matriz) throws Exception {
     if (matriz == null)
@@ -60,24 +58,17 @@ public class ColecaoDeObjetos implements Iterator {
   }
 
   public void adicionarPiloto(Piloto p) {
-    listaLinked.add(p);
     pilhaStack.push(p);
-    conjuntoSet.add(p);
     filaPrioridade.add(p);
     arvoreSet.add(p);
+    mapaHashMap.put(p.getMatricula(), p);
+    listaLinked.add(p);
   }
 
   // Métodos que retornam o Iterator de cada estrutura de forma padronizada
-  public Iterator<Piloto> getLinkedListIterator() {
-    return listaLinked.iterator();
-  }
 
   public Iterator<Piloto> getStackIterator() {
     return pilhaStack.iterator();
-  }
-
-  public Iterator<Piloto> getHashSetIterator() {
-    return conjuntoSet.iterator();
   }
 
   public Iterator<Piloto> getPriorityQueueIterator() {
@@ -86,5 +77,13 @@ public class ColecaoDeObjetos implements Iterator {
 
   public Iterator<Piloto> getTreeSetIterator() {
     return arvoreSet.iterator();
+  }
+
+  public Iterator<Piloto> getHashMapIterator() {
+    return mapaHashMap.values().iterator();
+  }
+
+  public Iterator<Piloto> getLinkedListIterator() {
+    return listaLinked.iterator();
   }
 }
