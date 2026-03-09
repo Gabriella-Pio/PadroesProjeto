@@ -1,0 +1,7 @@
+- Curso - 28 - Eng Soft; 33 - ADS -> UTILIZAR ENUM
+- Nome - Filho, junior , etc - não é sobrenome
+- Exemplo: Correa, Gabriella Pio
+
+- Tela: Opções - Combo Box
+
+- Devolver os dados como Iterator na Persistência
