@@ -37,7 +37,7 @@ public class PilotosPersistencia {
         String[] dados = linha.split(",");
         // Criação do objeto Piloto
         Piloto p = new Piloto(
-            dados[0].trim(), // Matrícula
+            Integer.parseInt(dados[0].trim()), // Matrícula
             dados[1].trim(), // Nome
             dados[2].trim(), // País de Origem
             Integer.parseInt(dados[3].trim()), // Idade

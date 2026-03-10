@@ -4,7 +4,7 @@ public class Piloto {
 
   // Atributos: matricula, nome, pais de origem, idade, equipe que corre, motor do
   // carro, pontuação
-  private String matricula;
+  private int matricula;
   private String nome;
   private String paisOrigem;
   private int idade;
@@ -13,7 +13,7 @@ public class Piloto {
   private int pontuacao;
 
   // Construtor
-  public Piloto(String matricula, String nome, String paisOrigem, int idade, String equipe, String motorCarro,
+  public Piloto(int matricula, String nome, String paisOrigem, int idade, String equipe, String motorCarro,
       int pontuacao) {
     this.matricula = matricula;
     this.nome = nome;
@@ -24,24 +24,12 @@ public class Piloto {
     this.pontuacao = pontuacao;
   }
 
-  // Construtor matriz
-  public Piloto(String[] dados) {
-    String[] campos = dados[0].split(",");
-    this.matricula = campos[0].trim();
-    this.nome = campos[1].trim();
-    this.paisOrigem = campos[2].trim();
-    this.idade = Integer.parseInt(campos[3].trim());
-    this.equipe = campos[4].trim();
-    this.motorCarro = campos[5].trim();
-    this.pontuacao = Integer.parseInt(campos[6].trim());
-  }
-
   // Getters e Setters
-  public String getMatricula() {
+  public int getMatricula() {
     return matricula;
   }
 
-  public void setMatricula(String matricula) {
+  public void setMatricula(int matricula) {
     this.matricula = matricula;
   }
 

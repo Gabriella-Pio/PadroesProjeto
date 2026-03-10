@@ -105,7 +105,7 @@ public class JanelaPilotos extends javax.swing.JFrame {
         while (conjunto.hasNext()) {
             String[] linha = new String[7];
             Piloto objetoPiloto = (Piloto) conjunto.next();
-            linha[0] = objetoPiloto.getMatricula();
+            linha[0] = String.valueOf(objetoPiloto.getMatricula());
             linha[1] = objetoPiloto.getNome();
             linha[2] = objetoPiloto.getPaisOrigem();
             linha[3] = String.valueOf(objetoPiloto.getIdade());

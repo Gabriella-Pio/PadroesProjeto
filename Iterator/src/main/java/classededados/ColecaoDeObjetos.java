@@ -22,7 +22,7 @@ public class ColecaoDeObjetos implements Iterator {
   private Stack<Piloto> pilhaStack = new Stack<>();
   private PriorityQueue<Piloto> filaPrioridade = new PriorityQueue<>(Comparator.comparing(Piloto::getPontuacao));
   private TreeSet<Piloto> arvoreSet = new TreeSet<>(Comparator.comparing(Piloto::getMatricula));
-  private HashMap<String, Piloto> mapaHashMap = new HashMap<>();
+  private HashMap<Integer, Piloto> mapaHashMap = new HashMap<>();
   private LinkedList<Piloto> listaLinked = new LinkedList<>();
 
   public ColecaoDeObjetos(Piloto[][] matriz) throws Exception {
