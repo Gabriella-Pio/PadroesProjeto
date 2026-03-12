@@ -1,16 +1,21 @@
 package com.mycompany.iterator;
 
-import classededados.Piloto;
-import classededados.ColecaoDeObjetos;
-import persistencia.PilotosPersistencia;
 import java.util.Iterator;
+
+import Iterator.MatrizContainer;
+import Model.Piloto;
+import Repository.PilotosRepository;
 
 public class IteratorMain {
     public static void main(String[] args) {
         try {
             // Ajuste o caminho para o seu arquivo CSV carregado
-            PilotosPersistencia persistencia = new PilotosPersistencia("src/main/java/dados/DadosDosPilotosF1 2.csv");
-            ColecaoDeObjetos colecao = persistencia.carregarPilotos();
+            PilotosRepository persistencia = new PilotosRepository("src/main/java/dados/DadosDosPilotosF1.csv");
+
+            Iterator<Piloto> it = persistencia.getPilhaIterator();
+
+            
+            // MatrizContainer colecao = persistencia.carregarPilotos();
 
             // System.out.println("=== EXIBINDO PILOTOS (Via ArrayList Iterator) ===");
             // exibirGrid(colecao.getArrayListIterator());

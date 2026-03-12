@@ -1,4 +1,4 @@
-package classededados;
+package Model;
 
 public class Piloto {
 
@@ -12,7 +12,7 @@ public class Piloto {
   private String motorCarro;
   private int pontuacao;
 
-  // Construtor
+  // Construtores
   public Piloto(int matricula, String nome, String paisOrigem, int idade, String equipe, String motorCarro,
       int pontuacao) {
     this.matricula = matricula;
@@ -22,6 +22,17 @@ public class Piloto {
     this.equipe = equipe;
     this.motorCarro = motorCarro;
     this.pontuacao = pontuacao;
+  }
+
+  public Piloto(String linha) {
+    String[] dados = linha.split(",");
+    this.matricula = Integer.parseInt(dados[0].trim());
+    this.nome = dados[1].trim();
+    this.paisOrigem = dados[2].trim();
+    this.idade = Integer.parseInt(dados[3].trim());
+    this.equipe = dados[4].trim();
+    this.motorCarro = dados[5].trim();
+    this.pontuacao = Integer.parseInt(dados[6].trim());
   }
 
   // Getters e Setters

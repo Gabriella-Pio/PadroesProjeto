@@ -10,6 +10,6 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
-        <exec.mainClass>interfacegrafica.JanelaPilotos</exec.mainClass>
+        <exec.mainClass>UI.Janela</exec.mainClass>
     </properties>
 </project>
