@@ -7,19 +7,22 @@
 // • Por Ênfase, Curso e Nome.
 // • Situação, Ênfase, Curso e Nome.
 
-package persistencia;
+package Repository;
+import Model.Aluno;
+import Repository.AlunosTemplateMethod;
 
-import classededados.Aluno;
-import persistencia.AlunosPersistenciaTemplateMethod;
+public class OrdenadoPorSituacaoEnfaseCursoNome extends AlunosTemplateMethod {
 
-public class OrdenadoPorEnfaseCursoNome extends AlunosPersistenciaTemplateMethod {
-  
-  public OrdenadoPorEnfaseCursoNome(String nome) {
+  public OrdenadoPorSituacaoEnfaseCursoNome(String nome) {
     super(nome);
   }
 
   @Override
-  public boolean criterio(Aluno a1, Aluno a2)  {
+  public boolean criterio(Aluno a1, Aluno a2) {
+    boolean s1 = a1.getSituacao();
+    boolean s2 = a2.getSituacao();
+    int compSituacao = Boolean.compare(s1, s2);
+
     String e1 = a1.getEnfase();
     String e2 = a2.getEnfase();
     int compEnfase = e1.compareToIgnoreCase(e2);
@@ -32,6 +35,7 @@ public class OrdenadoPorEnfaseCursoNome extends AlunosPersistenciaTemplateMethod
     String n2 = a2.getNome().getPrimeiroNome();
     int compNome = n1.compareToIgnoreCase(n2);
 
+    if (compSituacao != 0) return compSituacao < 0;
     if (compEnfase != 0) return compEnfase < 0;
     if (compCurso != 0) return compCurso < 0;
     return compNome <= 0;

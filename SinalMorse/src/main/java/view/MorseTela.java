@@ -97,7 +97,7 @@ public class MorseTela extends javax.swing.JFrame {
     pack();
   }
 
-  /** Usa MensagemTexto diretamente — SEM Adapter. */
+  /** Usa MensagemTexto diretamente. */
   private void usarTextoNativo() {
     String entrada = jTextFieldEntrada.getText().trim();
     if (entrada.isEmpty()) {
@@ -113,7 +113,7 @@ public class MorseTela extends javax.swing.JFrame {
   }
 
   /**
-   * Codifica em Morse e usa MorseAdapter para decodificar
+   * Usa MorseAdapter para decodificar
    */
   private void usarMorseAdapter() {
     String entrada = jTextFieldEntrada.getText().trim();

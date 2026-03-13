@@ -1,4 +1,4 @@
-package classededados;
+package Model;
 
 public enum Curso {
   ENGENHARIA_DE_SOFTWARE(28, "Engenharia de Software"),

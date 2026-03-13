@@ -7,11 +7,11 @@
 // • Por Ênfase, Curso e Nome.
 // • Situação, Ênfase, Curso e Nome.
 
-package persistencia;
-import classededados.Aluno;
-import persistencia.AlunosPersistenciaTemplateMethod;
+package Repository;
+import Model.Aluno;
+import Repository.AlunosTemplateMethod;
 
-public class OrdenadoPorSituacaoNome extends AlunosPersistenciaTemplateMethod {
+public class OrdenadoPorSituacaoNome extends AlunosTemplateMethod {
 
   public OrdenadoPorSituacaoNome(String nome) {
     super(nome);

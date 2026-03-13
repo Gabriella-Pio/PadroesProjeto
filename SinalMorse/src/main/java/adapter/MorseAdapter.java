@@ -6,14 +6,11 @@ import target.IMensagemTexto;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Faz com que um TransmissorMorse (sistema legado de rádio, que fala em código Morse) possa ser usado onde o sistema espera uma IMensagemTexto.
- */
 public class MorseAdapter implements IMensagemTexto {
 
   private ICodigoMorse transmissor;
 
-  // Tabela de decodificação: morse -> letra
+  // Tabela de decodificação
   private static final Map<String, String> MORSE_PARA_TEXTO = new HashMap<>();
 
   static {
@@ -60,7 +57,7 @@ public class MorseAdapter implements IMensagemTexto {
   }
 
   /**
-   * Obtém o sinal Morse do sistema legado e decodifica para texto legível.
+   * Obtém o sinal Morse do sistema legado e decodifica para texto.
    */
   @Override
   public String getMensagemEmTexto() {

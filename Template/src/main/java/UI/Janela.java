@@ -1,11 +1,13 @@
-package interfacegrafica;
+package UI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import Model.Aluno;
+import Repository.*;
+
 import java.awt.*;
 import java.util.Iterator;
-import classededados.Aluno;
-import persistencia.*;
 
 public class Janela extends javax.swing.JFrame {
 
@@ -81,7 +83,7 @@ public class Janela extends javax.swing.JFrame {
   private void jComboBoxOrdenacaoActionPerformed(java.awt.event.ActionEvent evt) {
     try {
       String caminho = "./src/dados/RelatorioDasEnfases.csv";
-      AlunosPersistenciaTemplateMethod ordenador = null;
+      AlunosTemplateMethod ordenador = null;
       int opcao = jComboBoxOrdenacao.getSelectedIndex();
 
       switch (opcao) {

@@ -1,6 +1,6 @@
-package classededados;
+package Model;
 
-import classededados.Curso;
+import Model.Curso;
 
 public class Aluno {
   // Atributos: nome, curso, situacao, enfase
