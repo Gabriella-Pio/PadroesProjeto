@@ -1,7 +1,5 @@
 package Model;
 
-import java.time.LocalDate;
-
 public class IngressoComum extends Ingresso {
 
   public IngressoComum(String evento, double precoBase) {
@@ -10,7 +8,7 @@ public class IngressoComum extends Ingresso {
 
   @Override
   public double calcularValorFinal() {
-    return precoBase; // Comum não tem desconto nem acréscimo
+    return precoBase;
   }
 
   @Override

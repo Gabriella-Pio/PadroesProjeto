@@ -3,16 +3,19 @@ package UI;
 import Factory.IngressoFactory;
 import Factory.Tipo;
 import Model.Ingresso;
+import UI.ModalVenda;
 import Repository.VendasRepository;
 import java.util.Iterator;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 public class Janela extends javax.swing.JFrame {
 
-    private VendasRepository repository = new VendasRepository("src/main/java/Data/vendas.csv");
+    private VendasRepository repository = new VendasRepository("vendas.csv");
+    private JTable jTableVendas;
 
     private JTextField txtEvento = new JTextField();
     private JTextField txtPreco = new JTextField();
@@ -34,64 +37,39 @@ public class Janela extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-        setTitle("Sistema de Gestão de Ingressos");
-        setSize(800, 600);
+        setTitle("Sistema de Venda de Ingressos");
+        setSize(900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JPanel painelCadastro = new JPanel(new GridLayout(2, 4, 10, 10));
-        painelCadastro.setBorder(BorderFactory.createTitledBorder("Nova Venda"));
-
+        // Painel superior
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JButton btnNovaVenda = new JButton("Nova Venda");
         JButton btnAtualizar = new JButton("Atualizar Lista");
 
-        painelCadastro.add(new JLabel("Evento:"));
-        painelCadastro.add(txtEvento);
-        painelCadastro.add(new JLabel("Preço Base:"));
-        painelCadastro.add(txtPreco);
-        painelCadastro.add(new JLabel("Tipo:"));
-        painelCadastro.add(cbTipo);
-        painelCadastro.add(new JLabel(""));
-        painelCadastro.add(btnVender);
-        painelCadastro.add(new JLabel(""));
-        painelCadastro.add(btnAtualizar);
+        topPanel.add(btnNovaVenda);
+        topPanel.add(btnAtualizar);
 
-        // Configuração da Tabela
         jTableVendas = new JTable();
+        jTableVendas.setRowHeight(25);
         jTableVendas.setModel(new DefaultTableModel(
                 new Object[][] {},
                 new String[] { "Evento", "Tipo", "Valor Final (R$)" }));
         JScrollPane scroll = new JScrollPane(jTableVendas);
 
-        // Layout Principal
-        add(painelCadastro, BorderLayout.NORTH);
+        // Layout principal
+        add(topPanel, BorderLayout.NORTH);
         add(scroll, BorderLayout.CENTER);
 
-        // Ação do Botão Vender e do de Atualizar
-        btnVender.addActionListener(e -> acaoVender());
+        // Ações dos botões
+        btnNovaVenda.addActionListener(e -> abrirModalCadastro());
         btnAtualizar.addActionListener(e -> inicializar());
     }
 
-    private void acaoVender() {
-        try {
-            String evento = txtEvento.getText();
-            double preco = Double.parseDouble(txtPreco.getText());
-            Tipo tipo = (Tipo) cbTipo.getSelectedItem();
-
-            // Uso da Factory para criar o objeto correto
-            Ingresso novo = IngressoFactory.getIngresso(tipo, evento, preco);
-
-            // Repository persiste no CSV
-            repository.salvarVenda(novo, tipo);
-
-            JOptionPane.showMessageDialog(this, "Venda realizada!\n" + novo.gerarRecibo());
-            inicializar();
-
-            // Limpar campos
-            txtEvento.setText("");
-            txtPreco.setText("");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
-        }
+    private void abrirModalCadastro() {
+        // Cria e exibe a janela modal
+        ModalVenda modal = new ModalVenda(this, repository, () -> inicializar());
+        modal.setVisible(true);
     }
 
     private void imprimirVendasNaGrid(Iterator<Ingresso> conjunto) {
@@ -112,5 +90,15 @@ public class Janela extends javax.swing.JFrame {
         SwingUtilities.invokeLater(() -> new Janela().setVisible(true));
     }
 
-    private JTable jTableVendas;
+    // public static void main(String[] args) {
+    // try {
+    // // Tenta colocar o visual nativo do seu sistema operacional
+    // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
+    // SwingUtilities.invokeLater(() -> new Janela().setVisible(true));
+    // }
+
+    // private JTable jTableVendas;
 }

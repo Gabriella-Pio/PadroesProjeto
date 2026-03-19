@@ -1,7 +1,5 @@
 package Model;
 
-import java.time.LocalDate;
-
 public class IngressoIdoso extends Ingresso {
 
   public IngressoIdoso(String evento, double precoBase) {
@@ -10,7 +8,7 @@ public class IngressoIdoso extends Ingresso {
 
   @Override
   public double calcularValorFinal() {
-    return precoBase * 0.5; // Idosos têm 50% de desconto
+    return precoBase * 0.5;
   }
 
   @Override
