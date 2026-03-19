@@ -1,0 +1,8 @@
+# Ignorar todos os arquivos compilados do Java
+*.class
+
+# Ignorar a pasta de build do Maven
+target/
+
+# Ignorar pastas de configuração do VS Code (opcional)
+.vscode/

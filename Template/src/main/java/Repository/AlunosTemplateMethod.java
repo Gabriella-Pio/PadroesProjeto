@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Iterator;
 
+import Iterator.AlunoIterator;
 import Model.Aluno;
 
 import java.util.ArrayList;
@@ -21,7 +22,6 @@ public abstract class AlunosTemplateMethod {
   // Método abstrato
   public abstract boolean criterio(Aluno a1, Aluno a2);
 
-  
   public Iterator<Aluno> listarAlunos() throws Exception {
     try {
       ArrayList<Aluno> array = new ArrayList<>();
@@ -44,7 +44,9 @@ public abstract class AlunosTemplateMethod {
           }
         }
       }
-      return array.iterator();
+      // return array.iterator();
+      return new AlunoIterator(array);
+      
     } catch (
 
     Exception erro) {
