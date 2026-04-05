@@ -5,6 +5,8 @@ import Factory.Tipo;
 import Model.Ingresso;
 import Repository.VendasRepository;
 import main.java.Model.Decorator.MeetAndGreet;
+import main.java.Model.Decorator.KitMerchandising;
+import main.java.Model.Decorator.BackstageTour;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,27 +25,45 @@ public class ModalVenda extends JDialog {
     private JCheckBox chkTour = new JCheckBox("Backstage Tour (+100,00)");
 
     public ModalVenda(JFrame pai, VendasRepository repo, Runnable atualizarTabela) {
-        super(pai, "Cadastrar Venda", true); // O 'true' ativa o comportamento Modal
+        super(pai, "Cadastrar Venda", true);
         this.repository = repo;
         this.callback = atualizarTabela;
 
-        // Layout do formulário
-        JPanel painel = new JPanel(new GridLayout(4, 2, 10, 10));
-        painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        setLayout(new BorderLayout());
 
-        painel.add(new JLabel("Nome do Evento:"));
-        painel.add(txtEvento);
-        painel.add(new JLabel("Preço Base:"));
-        painel.add(txtPreco);
-        painel.add(new JLabel("Categoria:"));
-        painel.add(cbTipo);
-        painel.add(chkMeet);
-        painel.add(chkKit);
-        painel.add(chkTour);
-        painel.add(new JLabel(""));
-        painel.add(btnSalvar);
+        // Painel de Informações Básicas
+        JPanel painelInfo = new JPanel(new GridLayout(3, 2, 10, 10));
+        painelInfo.setBorder(BorderFactory.createTitledBorder("Informações Básicas"));
 
-        add(painel);
+        painelInfo.add(new JLabel("Nome do Evento:"));
+        painelInfo.add(txtEvento);
+        painelInfo.add(new JLabel("Preço Base:"));
+        painelInfo.add(txtPreco);
+        painelInfo.add(new JLabel("Categoria:"));
+        painelInfo.add(cbTipo);
+
+        // Painel de Experiências Adicionais (Checkboxes)
+        JPanel painelAdicionais = new JPanel(new GridLayout(3, 1));
+        painelAdicionais.setBorder(BorderFactory.createTitledBorder("Experiências Adicionais (Decorator)"));
+        painelAdicionais.add(chkMeet);
+        painelAdicionais.add(chkKit);
+        painelAdicionais.add(chkTour);
+
+        // Painel do Botão
+        JPanel painelBotao = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        painelBotao.add(btnSalvar);
+
+        // Container Central para empilhar os painéis
+        JPanel container = new JPanel();
+        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+        container.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        container.add(painelInfo);
+        container.add(Box.createRigidArea(new Dimension(0, 10)));
+        container.add(painelAdicionais);
+
+        add(container, BorderLayout.CENTER);
+        add(painelBotao, BorderLayout.SOUTH);
+
         pack();
         setLocationRelativeTo(pai);
 

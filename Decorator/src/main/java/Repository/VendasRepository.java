@@ -1,5 +1,9 @@
 package Repository;
 
+import main.java.Model.Decorator.MeetAndGreet;
+import main.java.Model.Decorator.KitMerchandising;
+import main.java.Model.Decorator.BackstageTour;
+
 import Factory.IngressoFactory;
 import Factory.Tipo;
 import Iterator.VendasIterator;

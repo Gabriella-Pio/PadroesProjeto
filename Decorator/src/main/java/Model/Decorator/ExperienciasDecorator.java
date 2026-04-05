@@ -4,9 +4,10 @@ import Model.Ingresso;
 
 public abstract class ExperienciasDecorator extends Ingresso {
 
-  public ExperienciasDecorator(String evento, double precoBase) {
-    super(evento, precoBase);
-  }
+  protected Ingresso ingressoDecorado;
 
-  public abstract String getDescricaoTipo();
+  public ExperienciasDecorator(Ingresso ingresso) {
+    super(ingresso.getEvento(), ingresso.getPrecoBase());
+    this.ingressoDecorado = ingresso;
+  }
 }

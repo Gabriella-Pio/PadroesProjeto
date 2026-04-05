@@ -1,20 +1,19 @@
 package main.java.Model.Decorator;
+import Model.Ingresso;
 
 public class BackstageTour extends ExperienciasDecorator {
-  private Ingresso ingresso;
 
   public BackstageTour(Ingresso ingresso) {
-    super(ingresso.getEvento(), ingresso.getPrecoBase());
-    this.ingresso = ingresso;
+    super(ingresso);
   }
 
   @Override
   public double calcularValorFinal() {
-    return ingresso.calcularValorFinal() + 100.0;
+    return ingressoDecorado.calcularValorFinal() + 100.0;
   }
 
   @Override
   public String getDescricaoTipo() {
-    return ingresso.getDescricaoTipo() + " - Backstage Tour";
+    return ingressoDecorado.getDescricaoTipo() + " - Backstage Tour";
   }
 }
