@@ -50,7 +50,6 @@ public class Janela extends javax.swing.JFrame {
       }
     });
 
-    // Layout simplificado (FlowLayout no topo + Tabela no centro)
     JPanel painelTopo = new JPanel(new FlowLayout(FlowLayout.LEFT));
     painelTopo.add(jLabelInstrucao);
     painelTopo.add(jComboBoxOrdenacao);
@@ -122,7 +121,6 @@ public class Janela extends javax.swing.JFrame {
   }
 
   public static void main(String args[]) {
-    // Define o Look and Feel Nimbus (o padrão clássico do professor)
     try {
       for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
         if ("Nimbus".equals(info.getName())) {

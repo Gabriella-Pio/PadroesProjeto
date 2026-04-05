@@ -10,7 +10,6 @@
 package Repository;
 
 import Model.Aluno;
-import Repository.AlunosTemplateMethod;
 
 public class OrdenadoPorEnfaseCursoNome extends AlunosTemplateMethod {
   

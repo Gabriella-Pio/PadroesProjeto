@@ -1,7 +1,5 @@
 package Model;
 
-import Model.Curso;
-
 public class Aluno {
   // Atributos: nome, curso, situacao, enfase
   private Nome nome;

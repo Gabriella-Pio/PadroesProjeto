@@ -10,7 +10,6 @@
 package Repository;
 
 import Model.Aluno;
-import Repository.AlunosTemplateMethod;
 
 public class OrdenadoPorNome extends AlunosTemplateMethod {
   public OrdenadoPorNome(String nome) {

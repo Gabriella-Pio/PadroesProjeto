@@ -2,7 +2,6 @@ package com.mycompany.iterator;
 
 import java.util.Iterator;
 
-import Iterator.MatrizContainer;
 import Model.Piloto;
 import Repository.PilotosRepository;
 

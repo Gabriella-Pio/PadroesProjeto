@@ -1,16 +1,13 @@
 package UI;
 
-import Factory.IngressoFactory;
 import Factory.Tipo;
 import Model.Ingresso;
-import UI.ModalVenda;
 import Repository.VendasRepository;
 import java.util.Iterator;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
 public class Janela extends javax.swing.JFrame {
 
