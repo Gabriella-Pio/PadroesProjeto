@@ -1,4 +1,4 @@
-package main.java.Model.Decorator;
+package Model.Decorator;
 import Model.Ingresso;
 
 public class KitMerchandising extends ExperienciasDecorator {

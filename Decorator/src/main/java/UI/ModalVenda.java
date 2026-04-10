@@ -4,9 +4,9 @@ import Factory.IngressoFactory;
 import Factory.Tipo;
 import Model.Ingresso;
 import Repository.VendasRepository;
-import main.java.Model.Decorator.MeetAndGreet;
-import main.java.Model.Decorator.KitMerchandising;
-import main.java.Model.Decorator.BackstageTour;
+import Model.Decorator.MeetAndGreet;
+import Model.Decorator.KitMerchandising;
+import Model.Decorator.BackstageTour;
 
 import javax.swing.*;
 import java.awt.*;
